@@ -1,3 +1,3 @@
-module github.com/techiehe/go-web-framework
+module github.com/techiehe/go-run
 
 go 1.22.1
