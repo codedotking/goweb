@@ -8,30 +8,6 @@ import (
 	"github.com/techiehe/goweb/context"
 )
 
-// HandlerFunc 处理器
-type HandlerFunc func(*context.Context)
-
-// IRoutes
-type IRoutes interface {
-	Use(...HandlerFunc) IRoutes
-
-	Handle(string, string, ...HandlerFunc) IRoutes
-	Any(string, ...HandlerFunc) IRoutes
-	GET(string, ...HandlerFunc) IRoutes
-	POST(string, ...HandlerFunc) IRoutes
-	DELETE(string, ...HandlerFunc) IRoutes
-	PATCH(string, ...HandlerFunc) IRoutes
-	PUT(string, ...HandlerFunc) IRoutes
-	OPTIONS(string, ...HandlerFunc) IRoutes
-	HEAD(string, ...HandlerFunc) IRoutes
-	Match([]string, string, ...HandlerFunc) IRoutes
-
-	StaticFile(string, string) IRoutes
-	StaticFileFS(string, string, http.FileSystem) IRoutes
-	Static(string, string) IRoutes
-	StaticFS(string, http.FileSystem) IRoutes
-}
-
 // IRouter defines all router handle interface includes single and group router.
 // type IRouter interface {
 // 	IRoutes
@@ -415,7 +391,7 @@ func (r *Router) allowed(path, reqMethod string) (allow string) {
 	return allow
 }
 
-// ServeHTTP makes the router implement the http.Handler interface.
+// ServeHTTP 让路由器实现 http.Handler 接口
 func (r *Router) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	if r.PanicHandler != nil {
 		defer r.recv(w, req)
