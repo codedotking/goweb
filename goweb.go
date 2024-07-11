@@ -27,3 +27,8 @@ func (f *Framework) POST(path string, handler http.HandlerFunc) {
 func (f *Framework) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	f.router.ServeHTTP(w, r)
 }
+
+// Run 启动
+func (f *Framework) Run(addr string) error {
+	return http.ListenAndServe(addr, f)
+}
