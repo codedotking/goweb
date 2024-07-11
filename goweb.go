@@ -12,16 +12,12 @@ type Framework struct {
 
 func New() *Framework {
 	return &Framework{
-		router: router.NewRouter(),
+		router: router.New(),
 	}
 }
 
-func (f *Framework) GET(path string, handler http.HandlerFunc) {
-	f.router.AddRoute("GET", path, handler)
-}
-
-func (f *Framework) POST(path string, handler http.HandlerFunc) {
-	f.router.AddRoute("POST", path, handler)
+// GET
+func (f *Framework) GET(path string, handleFunc http.HandlerFunc) {
 }
 
 func (f *Framework) ServeHTTP(w http.ResponseWriter, r *http.Request) {
